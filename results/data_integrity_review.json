@@ -1,0 +1,43 @@
+{
+  "dataset": "kmnist",
+  "checkpoint_epoch": 20,
+  "checkpoint_sha256": "6b3ceaaf7e4754014c6115786f40d22bc097f80e736cf7877bc16a000fed3cff",
+  "data_integrity": [
+    {
+      "filename": "train-images-idx3-ubyte.gz",
+      "md5": "bdb82020997e1d708af4cf47b453dcf7",
+      "matches_torchvision_resource": true
+    },
+    {
+      "filename": "train-labels-idx1-ubyte.gz",
+      "md5": "e144d726b3acfaa3e44228e80efcd344",
+      "matches_torchvision_resource": true
+    },
+    {
+      "filename": "t10k-images-idx3-ubyte.gz",
+      "md5": "5c965bf0a639b31b8f53240b1b52f4d7",
+      "matches_torchvision_resource": true
+    },
+    {
+      "filename": "t10k-labels-idx1-ubyte.gz",
+      "md5": "7320c461ea6c1c855c0b718fb2a4b134",
+      "matches_torchvision_resource": true
+    }
+  ],
+  "loaded_data_check": {
+    "all_loaded_images_and_labels_match_archives": true,
+    "loaded_examples_checked": 70000,
+    "labels_in_range": true,
+    "shared_unique_train_validation_image_hashes": 0,
+    "validation_examples_matching_training_image": 0,
+    "test_examples_matching_official_training_image": 0,
+    "exact_image_hash_algorithm": "sha256",
+    "near_duplicate_or_writer_overlap_checked": false
+  },
+  "train_validation_index_overlap": 0,
+  "split_sizes": {
+    "train": 55000,
+    "validation": 5000,
+    "test": 10000
+  }
+}

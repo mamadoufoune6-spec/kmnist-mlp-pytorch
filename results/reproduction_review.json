@@ -1,0 +1,25 @@
+{
+  "dataset": "kmnist",
+  "epochs": 20,
+  "seed": 42,
+  "split_seed": 42,
+  "history_exact_match": true,
+  "selected_epoch": 20,
+  "selected_model_tensors_exact_match": true,
+  "test_metrics_exact_match": true,
+  "original_experiment_records_preserved": true,
+  "validation": {
+    "loss": 0.6935144118309021,
+    "accuracy_percent": 78.72,
+    "examples": 5000
+  },
+  "test": {
+    "loss": 1.1184207649230957,
+    "accuracy_percent": 65.34,
+    "examples": 10000
+  },
+  "python": "3.12.10",
+  "torch": "2.14.0+cu126",
+  "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+  "scope": "same installed environment; no fresh-install or cross-hardware reproduction claim"
+}

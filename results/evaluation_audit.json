@@ -1,0 +1,375 @@
+{
+  "dataset": "kmnist",
+  "checkpoint_epoch": 20,
+  "checkpoint_sha256": "6b3ceaaf7e4754014c6115786f40d22bc097f80e736cf7877bc16a000fed3cff",
+  "seed": 42,
+  "split_seed": 42,
+  "split_sizes": {
+    "train": 55000,
+    "validation": 5000,
+    "test": 10000
+  },
+  "train_validation_index_overlap": 0,
+  "split_complete": true,
+  "train_indices_sha256": "5a90776050dd386793d0cdc11f2d2eb4fbe8eb37f61a376d4228275e5a1fb0c1",
+  "validation_indices_sha256": "a26af046450eeeac4ef09b98508d79c0dd47c6c4ba416a2da3a75003340369bb",
+  "preprocessing_sample_checks": 9,
+  "train_test_transform_match": true,
+  "dataset_integrity": [
+    {
+      "filename": "train-images-idx3-ubyte.gz",
+      "md5": "bdb82020997e1d708af4cf47b453dcf7",
+      "matches_torchvision_resource": true
+    },
+    {
+      "filename": "train-labels-idx1-ubyte.gz",
+      "md5": "e144d726b3acfaa3e44228e80efcd344",
+      "matches_torchvision_resource": true
+    },
+    {
+      "filename": "t10k-images-idx3-ubyte.gz",
+      "md5": "5c965bf0a639b31b8f53240b1b52f4d7",
+      "matches_torchvision_resource": true
+    },
+    {
+      "filename": "t10k-labels-idx1-ubyte.gz",
+      "md5": "7320c461ea6c1c855c0b718fb2a4b134",
+      "matches_torchvision_resource": true
+    }
+  ],
+  "evaluations": {
+    "validation": {
+      "published": {
+        "loss": 0.6935144118309021,
+        "accuracy_percent": 78.72,
+        "examples": 5000
+      },
+      "original_evaluator_device": "cuda",
+      "original_evaluator_batch64": {
+        "loss": 0.6935144118309021,
+        "accuracy_percent": 78.72,
+        "examples": 5000
+      },
+      "independent_cpu_evaluator_batch257": {
+        "loss": 0.6935144002944696,
+        "accuracy_percent": 78.72,
+        "examples": 5000,
+        "correct": 3936,
+        "confusion_matrix": [
+          [
+            461,
+            0,
+            1,
+            3,
+            8,
+            6,
+            1,
+            9,
+            4,
+            11
+          ],
+          [
+            0,
+            392,
+            21,
+            9,
+            18,
+            2,
+            22,
+            0,
+            26,
+            22
+          ],
+          [
+            0,
+            29,
+            277,
+            18,
+            15,
+            2,
+            76,
+            3,
+            47,
+            17
+          ],
+          [
+            1,
+            15,
+            6,
+            439,
+            25,
+            18,
+            4,
+            7,
+            19,
+            0
+          ],
+          [
+            22,
+            15,
+            22,
+            7,
+            346,
+            3,
+            22,
+            10,
+            8,
+            23
+          ],
+          [
+            8,
+            6,
+            20,
+            25,
+            9,
+            387,
+            11,
+            4,
+            19,
+            1
+          ],
+          [
+            1,
+            17,
+            42,
+            7,
+            13,
+            0,
+            406,
+            9,
+            8,
+            1
+          ],
+          [
+            3,
+            1,
+            2,
+            6,
+            16,
+            6,
+            8,
+            438,
+            5,
+            8
+          ],
+          [
+            9,
+            21,
+            16,
+            13,
+            6,
+            15,
+            22,
+            3,
+            384,
+            3
+          ],
+          [
+            9,
+            23,
+            29,
+            4,
+            16,
+            1,
+            4,
+            5,
+            12,
+            406
+          ]
+        ],
+        "class_counts": [
+          504,
+          512,
+          484,
+          534,
+          478,
+          490,
+          504,
+          493,
+          492,
+          509
+        ],
+        "class_accuracy_percent": [
+          91.46825396825396,
+          76.5625,
+          57.231404958677686,
+          82.20973782771536,
+          72.38493723849372,
+          78.9795918367347,
+          80.55555555555556,
+          88.84381338742394,
+          78.04878048780488,
+          79.76424361493123
+        ]
+      }
+    },
+    "test": {
+      "published": {
+        "loss": 1.1184207649230957,
+        "accuracy_percent": 65.34,
+        "examples": 10000
+      },
+      "original_evaluator_device": "cuda",
+      "original_evaluator_batch64": {
+        "loss": 1.1184207649230957,
+        "accuracy_percent": 65.34,
+        "examples": 10000
+      },
+      "independent_cpu_evaluator_batch257": {
+        "loss": 1.1184207626073797,
+        "accuracy_percent": 65.34,
+        "examples": 10000,
+        "correct": 6534,
+        "confusion_matrix": [
+          [
+            776,
+            2,
+            2,
+            9,
+            35,
+            40,
+            4,
+            58,
+            54,
+            20
+          ],
+          [
+            7,
+            649,
+            97,
+            19,
+            31,
+            3,
+            88,
+            3,
+            45,
+            58
+          ],
+          [
+            6,
+            103,
+            538,
+            43,
+            33,
+            9,
+            109,
+            26,
+            69,
+            64
+          ],
+          [
+            3,
+            96,
+            18,
+            715,
+            19,
+            32,
+            17,
+            14,
+            71,
+            15
+          ],
+          [
+            83,
+            43,
+            55,
+            25,
+            643,
+            9,
+            36,
+            19,
+            26,
+            61
+          ],
+          [
+            11,
+            44,
+            127,
+            30,
+            21,
+            619,
+            46,
+            5,
+            90,
+            7
+          ],
+          [
+            4,
+            28,
+            124,
+            16,
+            41,
+            3,
+            742,
+            18,
+            14,
+            10
+          ],
+          [
+            13,
+            19,
+            77,
+            14,
+            145,
+            5,
+            61,
+            462,
+            131,
+            73
+          ],
+          [
+            14,
+            50,
+            49,
+            29,
+            5,
+            26,
+            47,
+            7,
+            768,
+            5
+          ],
+          [
+            20,
+            54,
+            90,
+            2,
+            93,
+            3,
+            36,
+            29,
+            51,
+            622
+          ]
+        ],
+        "class_counts": [
+          1000,
+          1000,
+          1000,
+          1000,
+          1000,
+          1000,
+          1000,
+          1000,
+          1000,
+          1000
+        ],
+        "class_accuracy_percent": [
+          77.6,
+          64.9,
+          53.8,
+          71.5,
+          64.3,
+          61.9,
+          74.2,
+          46.2,
+          76.8,
+          62.2
+        ]
+      }
+    }
+  },
+  "evaluation_did_not_change_weights": true,
+  "gap_percentage_points": 13.38,
+  "preprocessing_absolute_tolerance": 1e-07
+}
