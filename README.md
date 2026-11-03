@@ -5,6 +5,10 @@ This exercise demonstrates dataset loading, autograd, optimisation, validation
 and held-out evaluation, using Mamadou's existing model and training loop.
 See [PROVENANCE.md](PROVENANCE.md) for the source identity and AI-assisted edits.
 
+The original model was implemented by Mamadou from theory learned through
+PyTorch documentation, Medium articles and Lilian Weng's writing. Later
+AI-assisted engineering changes are documented in [PROVENANCE.md](PROVENANCE.md).
+
 ## Method and provenance
 
 The architecture is flatten -> Linear(784, 512) -> ReLU -> Linear(512, 512)
@@ -147,8 +151,8 @@ SUPER. Elapsed time in the JSON is a run observation, not a hardware benchmark.
 The baseline uses one seed and the original script's 20-epoch budget. It is
 not a tuned or converged benchmark. Deterministic
 settings do not guarantee identical outcomes on other hardware or versions.
-The dependency list is not a lock file. Earlier tutorial attribution remains
-to be confirmed. Code is licensed under [MIT](LICENSE); see [third-party notices](THIRD_PARTY_NOTICES.md).
+The dependency list is not a lock file. Code is licensed under [MIT](LICENSE);
+see [third-party notices](THIRD_PARTY_NOTICES.md).
 
 
 ## Repository history

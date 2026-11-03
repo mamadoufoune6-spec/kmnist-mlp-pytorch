@@ -1,5 +1,10 @@
 # Provenance
 
+Mamadou implemented the original models and MLP training loop after studying
+the theory through PyTorch documentation, Medium articles and Lilian Weng's
+writing. These were implementations built from that understanding. Later Codex
+engineering changes are recorded separately below.
+
 
 - Existing work: the MLP architecture, KMNIST tensor preprocessing,
   cross-entropy objective, SGD learning rate 0.001, and the core training loop.
@@ -16,8 +21,8 @@ Extracted on 2 November 2026 from portfolio commit `6ad431f`.
 Model definitions, data splits, optimisation and metric calculations are preserved. Codex changed file paths and the CLI to run this dataset directly with `train.py`, removed the dependency on the other project and set the default budget to 20 epochs.
 Published metrics and curves were copied byte-for-byte from the recorded run.
 
-Training-loop reference and retained upstream BSD notice: see
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The MIT licence does not relicense upstream code or the downloaded datasets.
+Learning references and dependency/dataset notices: see
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The MIT licence does not relicense the dependencies or downloaded datasets.
 
 ## Evaluation audit follow-up
 
