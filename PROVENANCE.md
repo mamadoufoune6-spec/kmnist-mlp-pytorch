@@ -46,3 +46,12 @@ The original experiment JSON, plot and checkpoint were not replaced. No model
 or evaluation bug causing the validation/test discrepancy was confirmed. These
 are verification and documentation changes, not a new scientific method or an
 accuracy improvement. No hyperparameter optimisation was performed.
+
+## Regression tests and CI publication, 3 November 2026
+
+At Mamadou's request, Codex published the existing local regression additions
+in `tests/test_training.py` and `tests/test_audit.py` and authored a CPU-only,
+dataset-free GitHub Actions workflow and the associated README notes. All eight
+tests passed locally. The audit fixtures exercise corruption and overlap checks
+using synthetic archives; they are not evidence from a newly downloaded dataset.
+No model, preprocessing, training/evaluation workflow or recorded result changed.

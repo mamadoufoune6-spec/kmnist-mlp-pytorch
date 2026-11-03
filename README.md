@@ -64,11 +64,20 @@ The audit checks official cached archive hashes, split coverage, preprocessing,
 checkpoint selection and an independent CPU evaluator. It expects the original
 download archives to remain in the cache and compares against `results/metrics.json`.
 
-Run dataset-free training tests with:
+Run dataset-free regression tests with:
 
 ```powershell
 python -B -m unittest discover -s tests -v
 ```
+
+All **8 tests passed locally** on 3 November 2026. The published tests cover
+weighted metrics, non-finite loss rejection, checkpoint round-tripping,
+validation-only checkpoint selection, wrong-dataset rejection, loaded-cache
+corruption and exact image overlap. Audit tests create tiny synthetic IDX
+archives; they do not download KMNIST or rerun the full data audit.
+The [GitHub Actions workflow](.github/workflows/tests.yml) runs this suite on
+Linux with Python 3.12 and CPU-only PyTorch. It does not train the baseline or
+claim to resolve the validation/test gap. CI status is reported by Actions.
 
 Dataset information and attribution: https://github.com/rois-codh/kmnist
 

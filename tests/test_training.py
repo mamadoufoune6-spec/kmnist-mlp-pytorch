@@ -4,6 +4,10 @@ import importlib.util
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
+import contextlib
+import io
+import json
 
 import torch
 from torch import nn
@@ -65,6 +69,51 @@ class TrainingTests(unittest.TestCase):
                                 self.model, self.loss, optimizer, "cpu")
         self.assertTrue(all(torch.equal(before[k], v)
                             for k, v in self.model.state_dict().items()))
+
+    def test_best_checkpoint_uses_validation_not_last_epoch_or_test(self):
+        validation = DataLoader(TensorDataset(self.inputs, self.labels), batch_size=2)
+        test = DataLoader(TensorDataset(self.inputs, self.labels), batch_size=2)
+        epochs = []
+        evaluated = []
+
+        def train_epoch(loader, model, loss, optimizer, device):
+            epochs.append(len(epochs) + 1)
+            with torch.no_grad():
+                for parameter in model.parameters():
+                    parameter.fill_(epochs[-1])
+            return {"loss": 1.0, "accuracy_percent": 0.0, "examples": 3}
+
+        def evaluate_epoch(loader, model, loss, device):
+            evaluated.append(loader)
+            if loader is test:
+                self.assertTrue(all(torch.all(p == 1) for p in model.parameters()))
+                return {"loss": 0.5, "accuracy_percent": 100.0, "examples": 3}
+            return {"loss": float(epochs[-1]), "accuracy_percent": 0.0, "examples": 3}
+
+        loaders = lambda **kwargs: (self.loader, validation, test)
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "run"
+            argv = ["train.py", "--epochs", "2", "--device", "cpu",
+                    "--output-dir", str(output)]
+            with patch("sys.argv", argv), \
+                 patch.object(training, "load_project", return_value=(lambda: nn.Linear(2, 2), loaders)), \
+                 patch.object(training, "train_loop", side_effect=train_epoch), \
+                 patch.object(training, "evaluate", side_effect=evaluate_epoch), \
+                 patch.object(training, "plot_history"), contextlib.redirect_stdout(io.StringIO()):
+                training.main()
+            result = json.loads((output / "metrics.json").read_text())
+            self.assertEqual(result["best_epoch"], 1)
+            self.assertEqual(torch.load(output / "best.pt", weights_only=True)["epoch"], 1)
+            self.assertEqual(torch.load(output / "last.pt", weights_only=True)["epoch"], 2)
+        self.assertEqual(evaluated, [validation, validation, test])
+
+    def test_evaluation_rejects_checkpoint_for_another_dataset(self):
+        from evaluate import load_checkpoint
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "wrong.pt"
+            torch.save({"dataset": "another-dataset"}, path)
+            with self.assertRaisesRegex(ValueError, "Expected a"):
+                load_checkpoint(path)
 
 
 if __name__ == "__main__":
